@@ -16,8 +16,25 @@
       }
     </script>-->
 
+     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyA8JcHyA2XDGZdTVfWhIbxbXTyeVcNP8Yw",
+      authDomain: "desafios-83ee7.firebaseapp.com",
+      databaseURL: "https://desafios-83ee7.firebaseio.com",
+      storageBucket: "desafios-83ee7.appspot.com",
+      messagingSenderId: "189809858908"
+    };
+    firebase.initializeApp(config);
+  </script>
+
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
