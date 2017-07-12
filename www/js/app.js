@@ -48,6 +48,15 @@ angular.module('app', ['ionic','app.controllers', 'app.services'])
       }
     }
   })
+  .state('tab.crearDesafio', {
+    url: '/crear',
+    views: {
+      'tab-crearDes': {
+        templateUrl: 'templates/crearDesafio.html',
+        controller: 'crearDesafioCtrl'
+      }
+    }
+  })
 
   .state('tab.chats', {
       url: '/chats',
