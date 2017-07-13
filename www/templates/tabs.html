@@ -1,29 +1,19 @@
-<!--
-Create tabs with an icon and label, using the tabs-positive style.
-Each tab's child <ion-nav-view> directive will have its own
-navigation history that also transitions its views in and out.
--->
-<ion-tabs class="tabs-icon-top tabs-color-active-positive">
-
-  <!-- Dashboard Tab -->
-  <ion-tab title="Status" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/dash">
-    <ion-nav-view name="tab-dash"></ion-nav-view>
-  </ion-tab>
-
-  <!-- Chats Tab -->
-  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats">
-    <ion-nav-view name="tab-chats"></ion-nav-view>
-  </ion-tab>
-
-   <!-- Chats Tab -->
-  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/crear">
-    <ion-nav-view name="tab-crearDes"></ion-nav-view>
-  </ion-tab>
-
-  <!-- Account Tab -->
-  <ion-tab title="Account" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/account">
-    <ion-nav-view name="tab-account"></ion-nav-view>
-  </ion-tab>
-
-
-</ion-tabs>
+<ion-view title="desafiosTabs" id="page1">
+    <ion-tabs class="tabs-positive tabs-icon-top" id="desafiosTabs-tabs1">
+        <ion-tab title="Autor" icon="ion-person" href="#/tab/autor" id="desafiosTabs-tab1">
+            <ion-nav-view name="tab1"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Crear Desafio" icon="ion-android-create" href="#/tab/crear" id="desafiosTabs-tab2">
+            <ion-nav-view name="tabs-crearDes"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Lista Desafios" icon="ion-speakerphone" href="#/tab/lista" id="desafiosTabs-tab3">
+            <ion-nav-view name="tab3"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Aceptados" icon="ion-ribbon-a" href="#/tab/aceptados" id="desafiosTabs-tab4">
+            <ion-nav-view name="tab4"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Perfil" icon="ion-android-contact" href="#/tab/perfil" id="desafiosTabs-tab5">
+            <ion-nav-view name="tabs-perfil"></ion-nav-view>
+        </ion-tab>
+    </ion-tabs>
+</ion-view>

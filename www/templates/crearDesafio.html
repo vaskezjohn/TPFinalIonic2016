@@ -1,5 +1,5 @@
 <ion-view title="Crear Desafio" hide-back-button="true" cache-view="false" id="page3">
-    <ion-content padding="true" style="background: url(img/Background.jpg) no-repeat center;background-size:cover;" class="has-header">
+    <ion-content padding="true" class="has-header">
     	<form id="formCrear" class="list" name="formCrear">
             <label class="item item-input" id="crearDesafio-input1" name="desafioTitle">
                 <span class="input-label">Titulo</span>
@@ -13,12 +13,12 @@
             <div class="spacer" style="width: 300px; height: 10px;"></div>
             <label class="item item-input" id="crearDesafio-input8" name="desafioInicio">
                 <span class="input-label">Fecha Inicio</span>
-                <input type="date" ng-model="nuevoDesafioData.fechaInicio" placeholder="" required>
+                <input type="date" ng-model="nuevoDesafioData.fechaInicio" placeholder="yyyy-MM-dd"  required>
             </label>
             <div class="spacer" style="width: 300px; height: 10px;"></div>
             <label class="item item-input" id="crearDesafio-input9" name="desafioFin">
                 <span class="input-label">Fecha Fin</span>
-                <input type="date" ng-model="nuevoDesafioData.fechaFin" placeholder="" required>
+                <input type="date" ng-model="nuevoDesafioData.fechaFin" required>
             </label>
             <div class="spacer" style="width: 300px; height: 10px;"></div>
             <ion-item class="range range-positive" id="crearDesafio-range2">Apuesta ${{nuevoDesafioData.valorApuesta}}

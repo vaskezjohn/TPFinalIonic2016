@@ -16,19 +16,23 @@ function ($scope,$state ,$stateParams,$ionicPopup, CreditosSrv, UsuarioDesafios,
 
   $scope.$on('$ionicView.loaded', function () {
     if(firebase.auth().currentUser == null){
-      $state.go('desafiosTabs.perfilLoginRegister');
+      $state.go('tab.perfilLoginRegister');
     }
   });
 
+ console.log(firebase.auth().currentUser);
   $scope.nuevoDesafioData = {
     titulo: "DesafioPlaceHolder",
     detalle: "ESTA ES UNA descripcion de Desafio!!",
-    fechaInicio: new Date("13/10/2016"),
-    fechaFin: new Date("29/10/2016"),
+    fechaInicio: new Date(2017, 0, 1),
+
+    fechaFin: new Date(2017, 8, 12),
     valorApuesta: 50
   };
 
-  //$scope.maxCredits = UsuarioDesafios.getCredits();
+  console.log($scope.nuevoDesafioData.fechaInicio);
+
+  $scope.maxCredits = UsuarioDesafios.getCredits();
 
   $scope.updateTextArea = function(id) {
     var element = document.getElementById(id);
@@ -42,7 +46,7 @@ function ($scope,$state ,$stateParams,$ionicPopup, CreditosSrv, UsuarioDesafios,
       detalle: $scope.nuevoDesafioData.detalle,
       fechaInicio: $scope.nuevoDesafioData.fechaInicio.getTime(),
       fechaFin: $scope.nuevoDesafioData.fechaFin.getTime(),
-      creador: "useralgo",//UsuarioDesafios.getShowData(),
+      creador: UsuarioDesafios.getShowData(),//"useralgo",
       desafiado: "",
       estado: 'Available',
       ganador: "",
