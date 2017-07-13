@@ -78,7 +78,7 @@ angular.module('app.services', [])
 
   function EnviarNotificacion(){
     var http = new XMLHttpRequest();
-      var url =  'https://fcm.googleapis.com/fcm/send';
+    var url =  'https://fcm.googleapis.com/fcm/send';
     
     var params = JSON.stringify({
             "to":"/topics/all", //Topic or single device

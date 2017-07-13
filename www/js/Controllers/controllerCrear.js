@@ -24,9 +24,9 @@ function ($scope,$state ,$stateParams,$ionicPopup, CreditosSrv, UsuarioDesafios,
   $scope.nuevoDesafioData = {
     titulo: "DesafioPlaceHolder",
     detalle: "ESTA ES UNA descripcion de Desafio!!",
-    fechaInicio: new Date(2017, 0, 1),
+    fechaInicio: new Date("07/13/2017"),
 
-    fechaFin: new Date(2017, 8, 12),
+    fechaFin: new Date("09/13/2017"),
     valorApuesta: 50
   };
 
@@ -56,11 +56,11 @@ function ($scope,$state ,$stateParams,$ionicPopup, CreditosSrv, UsuarioDesafios,
         
         $scope.console(error);
 
-      }//else{
-        //SrvFirebase.EnviarNotificacion();
-        //CreditosSrv.GastarCreditos(UsuarioDesafios.getShowData(),$scope.nuevoDesafioData.valorApuesta);
-        //$scope.cleanData();
-     // }
+      }else{
+        SrvFirebase.EnviarNotificacion();
+         CreditosSrv.GastarCreditos(UsuarioDesafios.getShowData(),$scope.nuevoDesafioData.valorApuesta);
+         $scope.cleanData();
+      }
     });
 
     

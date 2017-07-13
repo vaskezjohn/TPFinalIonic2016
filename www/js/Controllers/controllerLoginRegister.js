@@ -23,9 +23,6 @@ function ($scope, $stateParams, $timeout,$ionicPopup, UsuarioDesafios,SrvFirebas
   $scope.registerData = {};
   $scope.isLogged = firebase.auth().currentUser != null;
   $scope.modalState = $scope.isLogged ? 'Perfil' : 'Login';
- //$scope.modalState ='Login';
-
-  console.log($scope.isLogged);
 
  $scope.$on('$ionicView.loaded', function () {
     if($scope.isLogged){
@@ -295,18 +292,13 @@ function ($scope, $stateParams, $timeout,$ionicPopup, UsuarioDesafios,SrvFirebas
   };
 
   $scope.loginAdmin = function(){
-    $scope.loginData.usermail = "marcosmurcia92@gmail.com";
-    $scope.loginData.password = "firebase123";
+    $scope.loginData.usermail = "vaskezjohn@gmail.com";
+    $scope.loginData.password = "159159";
   }
 
   $scope.loginJugadorUno = function(){
-    $scope.loginData.usermail = "juan_banana96@hotmail.com";
-    $scope.loginData.password = "firebase123";
-  }
-
-  $scope.loginJugadorDos = function(){
-    $scope.loginData.usermail = "mark_facu@hotmail.com";
-    $scope.loginData.password = "firebase123";
+    $scope.loginData.usermail = "joni_vss@hotmail.com";
+    $scope.loginData.password = "159159";
   }
 
   $scope.cargarCreditos = function(){

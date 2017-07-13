@@ -36,7 +36,7 @@ function ($scope,$state, $timeout, $stateParams, UsuarioDesafios,SrvFirebase) {
   });
 
   $scope.IrAlDesafio = function(desafio){
-    $state.go('detallesDesafio',{desId : desafio.id, backState : 'desafiosTabs.listaDeDesafios'});
+    $state.go('detallesDesafio',{desId : desafio.id, backState : 'tab.listaDeDesafios'});
   };
 
 }]);
