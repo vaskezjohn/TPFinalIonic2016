@@ -1,34 +1,18 @@
-////////////////////////////////////////////////////////////////////
-//        IMPORTANTE:                                             // 
-//    ESTADOS DE DESAFIOS:                                        //
-//            _Available = Recien Creado (Disponible)             // 
-//            _Accepted = Aceptado                                //
-//            _Checking = Pendiente a revision por Administrador  //
-//            _Finished = Terminado                               //
-////////////////////////////////////////////////////////////////////
-
 angular.module('app.controllers')
    
-.controller('perfilLoginRegisterCtrl', ['$scope', '$stateParams', '$timeout','$ionicPopup', 'UsuarioDesafios','SrvFirebase','CreditosSrv','$cordovaBarcodeScanner', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('perfilLoginRegisterCtrl', ['$scope', '$stateParams', '$timeout','$ionicPopup', 'UsuarioDesafios','SrvFirebase','CreditosSrv','$cordovaBarcodeScanner',
 function ($scope, $stateParams, $timeout,$ionicPopup, UsuarioDesafios,SrvFirebase,CreditosSrv,$cordovaBarcodeScanner) {
-  $scope.userData = {
-    username: UsuarioDesafios.getName(),
-    email: UsuarioDesafios.getMail(),
-    credits: UsuarioDesafios.getCredits(),
-    profile_picture : UsuarioDesafios.getPhoto()
-  };
   $scope.loginData = {};
   $scope.registerData = {};
   $scope.isLogged = firebase.auth().currentUser != null;
   $scope.modalState = $scope.isLogged ? 'Perfil' : 'Login';
 
+
  $scope.$on('$ionicView.loaded', function () {
     if($scope.isLogged){
       $scope.getCurrentUserData();
     }
-  });
+  }); 
 
   $scope.doLoginGoogle = function(){
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -38,6 +22,12 @@ function ($scope, $stateParams, $timeout,$ionicPopup, UsuarioDesafios,SrvFirebas
         $scope.checkForProviderData();
         $timeout(function(){
             $scope.afterLoginSuccess();
+            $scope.userData = {
+              username: UsuarioDesafios.getName(),
+              email: UsuarioDesafios.getMail(),
+              credits: UsuarioDesafios.getCredits(),
+              profile_picture : UsuarioDesafios.getPhoto()
+            };
           },100);
       },function(error){
         console.info("ERROR GOOGLE+: ", error);
@@ -45,14 +35,19 @@ function ($scope, $stateParams, $timeout,$ionicPopup, UsuarioDesafios,SrvFirebas
   };
 
   $scope.doLogin = function() {
+    $scope.Funciona = false;    
+    $scope.NoFunciona = false;  
+
     firebase.auth().signInWithEmailAndPassword($scope.loginData.usermail, $scope.loginData.password)
       .catch(function(error) {
       // Handle Errors here.
+      $scope.NoFunciona = true;
       var errorCode = error.code;
       var errorMessage = error.message;
       console.info("ERROR " + errorCode, errorMessage);
       // ...
     }).then(function(success){
+      $scope.Funciona = true;
       console.info("SUCCESS",success);
         if(success){
           if(firebase.auth().currentUser.emailVerified){

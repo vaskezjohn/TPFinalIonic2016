@@ -1,22 +1,27 @@
-////////////////////////////////////////////////////////////////////
-//        IMPORTANTE:                                             // 
-//    ESTADOS DE DESAFIOS:                                        //
-//            _Available = Recien Creado (Disponible)             // 
-//            _Accepted = Aceptado                                //
-//            _Checking = Pendiente a revision por Administrador  //
-//            _Finished = Terminado                               //
-////////////////////////////////////////////////////////////////////
-
 angular.module('app.controllers')
 
-.controller('detallesDesafioCtrl', ['$scope','$http','$state', '$timeout', '$ionicPopup', '$stateParams', 'CreditosSrv' ,'UsuarioDesafios','SrvFirebase', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('detallesDesafioCtrl', ['$scope','$http','$state', '$timeout', '$ionicPopup', '$stateParams', 'CreditosSrv' ,'UsuarioDesafios','SrvFirebase',
 function ($scope,$http,$state, $timeout, $ionicPopup, $stateParams, CreditosSrv, UsuarioDesafios,SrvFirebase) {
 
   $scope.$on('$ionicView.loaded', function () {
     if(firebase.auth().currentUser == null){
       $state.go('tab.perfilLoginRegister');
+    }
+    else
+    {
+      debugger;
+      console.info("PARAMS", $stateParams.desId);
+      SrvFirebase.RefDesafios($stateParams.desId).once('value', function(snapshot) {
+      var exists = (snapshot.val() != null);
+      console.log(exists);
+      if(exists){
+        $scope.des = snapshot.val();
+        $scope.des.fechaInicio = new Date(snapshot.val().fechaInicio);
+        $scope.des.fechaFin = new Date(snapshot.val().fechaFin);
+        $scope.fechaInicioReal = $scope.getFechaInicio();
+        $scope.fechaFinReal = $scope.getFechaFin();
+      }
+  });
     }
   });
 
@@ -76,7 +81,7 @@ function ($scope,$http,$state, $timeout, $ionicPopup, $stateParams, CreditosSrv,
 
          alertPopup.then(function(res) {
            console.log('Alert de Aceptado cerrado');
-            $state.go('desafiosTabs.desafiosAceptados');
+            $state.go('tab.desafiosAceptados');
          });
       }
     });
@@ -153,18 +158,7 @@ function ($scope,$http,$state, $timeout, $ionicPopup, $stateParams, CreditosSrv,
     });
   };
 
-  console.info("PARAMS", $stateParams.desId);
-  SrvFirebase.RefDesafios($stateParams.desId).once('value', function(snapshot) {
-      var exists = (snapshot.val() != null);
-      console.log(exists);
-      if(exists){
-        $scope.des = snapshot.val();
-        $scope.des.fechaInicio = new Date(snapshot.val().fechaInicio);
-        $scope.des.fechaFin = new Date(snapshot.val().fechaFin);
-        $scope.fechaInicioReal = $scope.getFechaInicio();
-        $scope.fechaFinReal = $scope.getFechaFin();
-      }
-  });
+ 
   
 }]);
    

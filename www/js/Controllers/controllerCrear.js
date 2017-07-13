@@ -1,17 +1,6 @@
-////////////////////////////////////////////////////////////////////
-//        IMPORTANTE:                                             // 
-//    ESTADOS DE DESAFIOS:                                        //
-//            _Available = Recien Creado (Disponible)             // 
-//            _Accepted = Aceptado                                //
-//            _Checking = Pendiente a revision por Administrador  //
-//            _Finished = Terminado                               //
-////////////////////////////////////////////////////////////////////
-
 angular.module('app.controllers')
    
-.controller('crearDesafioCtrl', ['$scope','$state' ,'$stateParams','$ionicPopup', 'CreditosSrv' ,'UsuarioDesafios', 'SrvFirebase',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('crearDesafioCtrl', ['$scope','$state' ,'$stateParams','$ionicPopup', 'CreditosSrv' ,'UsuarioDesafios', 'SrvFirebase',
 function ($scope,$state ,$stateParams,$ionicPopup, CreditosSrv, UsuarioDesafios,SrvFirebase) {
 
   $scope.$on('$ionicView.loaded', function () {
@@ -20,24 +9,20 @@ function ($scope,$state ,$stateParams,$ionicPopup, CreditosSrv, UsuarioDesafios,
     }
   });
 
- console.log(firebase.auth().currentUser);
   $scope.nuevoDesafioData = {
-    titulo: "DesafioPlaceHolder",
-    detalle: "ESTA ES UNA descripcion de Desafio!!",
+    titulo: "Desafio por defecto",
+    detalle: "",
     fechaInicio: new Date("07/13/2017"),
-
     fechaFin: new Date("09/13/2017"),
     valorApuesta: 50
   };
 
-  console.log($scope.nuevoDesafioData.fechaInicio);
-
   $scope.maxCredits = UsuarioDesafios.getCredits();
 
-  $scope.updateTextArea = function(id) {
-    var element = document.getElementById(id);
-    element.style.height =  element.scrollHeight + "px";
-  }
+  //$scope.updateTextArea = function(id) {
+  //  var element = document.getElementById(id);
+  //  element.style.height =  element.scrollHeight + "px";
+ // }
 
   $scope.createDesafio = function(){
     var desafiosRef = SrvFirebase.RefDesafios();
@@ -52,21 +37,19 @@ function ($scope,$state ,$stateParams,$ionicPopup, CreditosSrv, UsuarioDesafios,
       ganador: "",
       valorApuesta: $scope.nuevoDesafioData.valorApuesta 
     },function(error){
-      if(error){
-        
+      if(error){        
         $scope.console(error);
-
       }else{
+        $state.go('tab.listaDeDesafios');
+        $scope.cleanData();
         SrvFirebase.EnviarNotificacion();
-         CreditosSrv.GastarCreditos(UsuarioDesafios.getShowData(),$scope.nuevoDesafioData.valorApuesta);
-         $scope.cleanData();
+        CreditosSrv.GastarCreditos(UsuarioDesafios.getShowData(),$scope.nuevoDesafioData.valorApuesta);         
       }
-    });
-
-    
+    });    
   }
 
   $scope.cleanData = function(){
+    debugger;
     $scope.nuevoDesafioData = {
       titulo: "",
       detalle: "",

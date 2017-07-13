@@ -18,7 +18,7 @@ angular.module('app.services', [])
       userMail = user.email;
       userUUID = user.uid;
       userCredits = user.credits;
-      userPhoto = user.profile_picture;
+      //userPhoto = user.profile_picture;
       isUserAdmin = (user.esAdmin == "SI");
     },
     getName:function(){
