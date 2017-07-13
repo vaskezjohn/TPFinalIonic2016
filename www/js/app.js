@@ -33,16 +33,21 @@ angular.module('app', ['ionic','ngCordova','app.controllers', 'app.services'])
   // setup an abstract state for the tabs directive
 
   // Each tab has its own nav history stack:
+ .state('tab.listaDeDesafios', {
+    url: '/lista',
+    views: {
+      'tab-lista': {
+        templateUrl: 'templates/listaDeDesafios.html',
+        controller: 'listaDeDesafiosCtrl'
+      }
+    }
+  })
 
-  // .state('tab.dash', {
-  //   url: '/dash',
-  //   views: {
-  //     'tab-dash': {
-  //       templateUrl: 'templates/tab-dash.html',
-  //       controller: 'DashCtrl'
-  //     }
-  //   }
-  // })
+  .state('detallesDesafio', {
+    url: 'desafio/:desId:backState',
+    templateUrl: 'templates/detallesDesafio.html',
+    controller: 'detallesDesafioCtrl' 
+  })
 
   .state('tab.perfilLoginRegister', {
     url: '/perfil',
