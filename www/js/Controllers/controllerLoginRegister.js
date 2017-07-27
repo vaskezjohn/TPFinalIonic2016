@@ -260,7 +260,10 @@ function ($scope, $stateParams, $timeout,$ionicPopup, UsuarioDesafios,SrvFirebas
 
   $scope.resetPassword = function(){
       firebase.auth().sendPasswordResetEmail($scope.loginData.usermail).then(function(respuesta) {
-        // Email sent.
+        $ionicPopup.alert({
+                 title: 'Se envio Email',
+                 template: 'Se ha enviado un mail para restablecer la contraseña'
+               });
         console.info("Success Reset",respuesta);
       }, function(error) {
         // An error happened.
@@ -293,6 +296,11 @@ function ($scope, $stateParams, $timeout,$ionicPopup, UsuarioDesafios,SrvFirebas
 
   $scope.loginJugadorUno = function(){
     $scope.loginData.usermail = "joni_vss@hotmail.com";
+    $scope.loginData.password = "159159";
+  }
+
+  $scope.loginJugadorDos = function(){
+    $scope.loginData.usermail = "ppsuser@outlook.es";
     $scope.loginData.password = "159159";
   }
 
