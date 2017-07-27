@@ -14,7 +14,7 @@ angular.module('app.services', [])
 
   return{
     login:function(user){
-      userName = user.username;
+      userName = user.email;
       userMail = user.email;
       userUUID = user.uid;
       userCredits = user.credits;
@@ -41,7 +41,7 @@ angular.module('app.services', [])
     },
     getShowData:function(){
       var jsonUsuario = {};
-      jsonUsuario.userName = "userName";
+      jsonUsuario.userName = userName;
       jsonUsuario.userMail = userMail;
       jsonUsuario.userUUID = userUUID;
       jsonUsuario.userCredits = userCredits;

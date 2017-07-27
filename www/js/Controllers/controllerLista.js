@@ -4,6 +4,7 @@ angular.module('app.controllers')
 function ($scope,$state, $timeout, $stateParams, UsuarioDesafios,SrvFirebase) {
   $scope.$on('$ionicView.loaded', function () {
     if(firebase.auth().currentUser == null){
+      debugger;
       $state.go('tab.perfilLoginRegister');
     }
     else

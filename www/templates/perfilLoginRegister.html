@@ -5,7 +5,7 @@
         <div id="perfilLoginRegister-container1" ng-if="modalState == 'Perfil'">
             <h2 id="perfilLoginRegister-heading1" style="color:#000000;text-align:center;">{{userData.username}}</h2>
             <div>                
-                <img ng-show= "userData.profile_picture == null" src="img/Profile.jpg" width="150px" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+                <img ng-show= "userData.profile_picture == null" src="img/Profile.jpg" width="150px" height="auto" style="display: block; margin-left: auto; margin-right: auto; border-radius: 100px">
             </div>
             <h3 id="perfilLoginRegister-heading2" style="color:#000000;text-align:justify;">Creditos: ${{userData.credits}}</h3>
             <button id="perfilLoginRegister-button2" ng-click="cargarCreditos()" class="button button-balanced  button-block">Cargar más créditos (300)</button>

@@ -27,6 +27,15 @@ angular.module('app', ['ionic','ngCordova','app.controllers', 'app.services'])
         controller: 'listaDeDesafiosCtrl'
       }
     }
+  }) 
+  .state('tab.autor', {
+    url: '/autor',
+    views: {
+      'tab-autor': {
+        templateUrl: 'templates/autor.html',
+        controller: 'autorCtrl'
+      }
+    }
   })
   .state('detallesDesafio', {
     url: 'desafio/:desId:backState',
