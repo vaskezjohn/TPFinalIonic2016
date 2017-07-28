@@ -4,6 +4,7 @@ angular.module('app', ['ionic','ngCordova','app.controllers', 'app.services'])
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+   //var Pushbots = PushbotsPlugin.initialize("desafios-83ee7", {"android":{"sender_id":"189809858908"}});
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
