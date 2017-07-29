@@ -8,8 +8,22 @@
                 <img ng-show= "userData.profile_picture == null" src="img/Profile.jpg" width="150px" height="auto" style="display: block; margin-left: auto; margin-right: auto; border-radius: 100px">
             </div>
             <h3 id="perfilLoginRegister-heading2" style="color:#000000;text-align:justify;">Creditos: ${{userData.credits}}</h3>
-            <button id="perfilLoginRegister-button2" ng-click="cargarCreditos()" class="button button-balanced  button-block">Cargar más créditos (300)</button>
-            <button id="perfilLoginRegister-button1" ng-click="doLogout()" class="button button-assertive  button-block">Desloguear</button>
+            <button id="perfilLoginRegister-button2" ng-click="cargarCreditos()" class="button button-balanced  button-block">Cargar más créditos</button>
+            <button id="perfilLoginRegister-button1" ng-click="doLogout()" class="button button-assertive  button-block">Desloguear</button> 
+
+
+            <form ng-show="user.isAdmin()" id="formCrear" class="list" name="formCrear">           
+                <div class="spacer" style="width: 300px; height: 10px;"></div>
+                <ion-item class="range range-positive">Importe ${{QR.QrImporte}}
+                    <input type="range" min="0" max="500" step="1" ng-model="QR.QrImporte">
+                </ion-item>
+                <div >
+                    <img ng-src="{{QR.QrUrl}}" width="200px" height="auto" style="display: block; margin-left: auto; margin-right: auto;" >
+            </div>
+
+            <button ng-disabled="QR.QrImporte <= 0"  ng-click="createQr()" class="button button-balanced  button-block icon ion-android-send">Generar QR</button>
+        </form>
+
         </div>
         <div id="perfilLoginRegister-container2" ng-if="modalState == 'Login'">  
             <form id="login-form3" class="list">

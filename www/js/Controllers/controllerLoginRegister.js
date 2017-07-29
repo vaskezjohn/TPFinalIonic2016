@@ -8,11 +8,46 @@ function ($scope, $stateParams, $timeout,$ionicPopup, UsuarioDesafios,SrvFirebas
   $scope.modalState = $scope.isLogged ? 'Perfil' : 'Login';
 
 
+
  $scope.$on('$ionicView.loaded', function () {
     if($scope.isLogged){
       $scope.getCurrentUserData();
     }
   }); 
+
+
+  $scope.user = UsuarioDesafios;
+
+ console.log($scope.user.isAdmin());
+
+ $scope.QR = {
+      QrImporte: 0,
+      QrUrl: "" 
+    };
+ $scope.ImgQR=false;
+          
+ 
+ $scope.createQr = function(){
+  $scope.QR.QrUrl = "http://chart.googleapis.com/chart?chs=150x150&cht=qr&chl="+$scope.QR.QrImporte+"&choe=text&chld=L|1";
+  var qrRef = SrvFirebase.RefQr();
+  qrRef.push({
+      QRUrl: $scope.QR.QrUrl,
+      Importe: $scope.QR.QrImporte,
+      creador: UsuarioDesafios.getShowData(),
+      bajaLogica: 0 
+    },function(error){   
+      if(error){        
+        $scope.console(error);
+      }else{
+        $scope.ImgQR=true;      
+      } 
+      });  
+  }
+
+
+
+
+
 
   $scope.doLoginGoogle = function(){
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -304,6 +339,12 @@ function ($scope, $stateParams, $timeout,$ionicPopup, UsuarioDesafios,SrvFirebas
     $scope.loginData.password = "159159";
   }
 
+
+  $scope.GenerarQR = function(){
+    console.log("entro");      
+    $state.go('crearQR');
+  }
+
   $scope.cargarCreditos = function(){
     $cordovaBarcodeScanner
           .scan()
@@ -314,14 +355,17 @@ function ($scope, $stateParams, $timeout,$ionicPopup, UsuarioDesafios,SrvFirebas
             //    title: 'Correcto',
             //    template: barcodeData.text
             //  });
-            if(barcodeData.text == "cargar_creditos_300"){
-              CreditosSrv.GanarCreditos(UsuarioDesafios.getShowData(),300);
+  
+            //if(barcodeData.text == "cargar_creditos_300"){
+            //if(isNaN(+barcodeData.text.centerCode)){
+              CreditosSrv.GanarCreditos(UsuarioDesafios.getShowData(),barcodeData.text);
               var alertPopup = $ionicPopup.alert({
                title: 'Correcto',
-               template: "SE CARGARAN 300 CREDITOS A TU CUENTA"
+               template: "SE CARGARAN "+barcodeData.text+" CREDITOS A TU CUENTA"
              });
+              $state.go('tab.perfilLoginRegister');
               $scope.getCurrentUserData();
-            }
+           // }
 
              // alertPopup.then(function(res) {
              //   console.log('Correcto cerrado');

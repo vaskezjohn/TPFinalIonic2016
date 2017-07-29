@@ -54,6 +54,7 @@ angular.module('app.services', [])
 
   this.RefUsuarios = RefUsuarios;
   this.RefDesafios = RefDesafios;
+  this.RefQr = RefQr;
   this.EnviarNotificacion = EnviarNotificacion;
 
   function ObtenerRef(coleccion){
@@ -75,6 +76,15 @@ angular.module('app.services', [])
       return ObtenerRef('desafios/');
     }
   }
+
+  function RefQr(child){
+    if(child){
+      return ObtenerRef('RefDesafios/'+child);
+    }else{
+      return ObtenerRef('CreditoQr/');
+    }
+  }
+
 
   function EnviarNotificacion(){
     var http = new XMLHttpRequest();

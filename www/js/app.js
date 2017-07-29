@@ -43,6 +43,7 @@ angular.module('app', ['ionic','ngCordova','app.controllers', 'app.services'])
     templateUrl: 'templates/detallesDesafio.html',
     controller: 'detallesDesafioCtrl' 
   })
+
   .state('tab.perfilLoginRegister', {
     url: '/perfil',
     views: {
@@ -61,6 +62,7 @@ angular.module('app', ['ionic','ngCordova','app.controllers', 'app.services'])
       }
     }
   })
+  
  .state('tab.desafiosAceptados', {
     url: '/aceptados',
     views: {

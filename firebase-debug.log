@@ -1,0 +1,36 @@
+[debug] [2017-07-29T03:56:02.251Z] ----------------------------------------------------------------------
+[debug] [2017-07-29T03:56:02.267Z] Command:      C:\Program Files\nodejs\node.exe C:\Users\John\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-07-29T03:56:02.267Z] CLI Version:  3.9.1
+[debug] [2017-07-29T03:56:02.267Z] Platform:     win32
+[debug] [2017-07-29T03:56:02.267Z] Node Version: v6.5.0
+[debug] [2017-07-29T03:56:02.267Z] Time:         Sat Jul 29 2017 00:56:02 GMT-0300 (Hora estándar de Argentina)
+[debug] [2017-07-29T03:56:02.267Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-07-29T03:56:02.408Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-07-29T03:56:02.408Z] > authorizing via signed-in user
+[debug] [2017-07-29T03:56:02.408Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-07-29T03:56:02.408Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/54lTHIhyeFcBgJXG4zVzn1nfPd4W3ptu--L0SyYi_UE',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jul 29 2017 00:56:02 GMT-0300 (Hora estándar de Argentina)
+[debug] [2017-07-29T03:56:02.720Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-29T03:56:03.039Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/desafios-83ee7  
+ Sat Jul 29 2017 00:56:03 GMT-0300 (Hora estándar de Argentina)
+[debug] [2017-07-29T03:56:05.394Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-29T03:56:05.394Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/desafios-83ee7/tokens  
+ Sat Jul 29 2017 00:56:05 GMT-0300 (Hora estándar de Argentina)
+[debug] [2017-07-29T03:56:06.315Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\John\Desktop\final\FinalApp'...
+[info] 
+[debug] [2017-07-29T03:56:06.315Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/desafios-83ee7  
+ Sat Jul 29 2017 00:56:06 GMT-0300 (Hora estándar de Argentina)
+[debug] [2017-07-29T03:56:07.442Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-29T03:56:07.442Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/189809858908/clients/_:getWebAppConfig  
+ Sat Jul 29 2017 00:56:07 GMT-0300 (Hora estándar de Argentina)
+[debug] [2017-07-29T03:56:08.736Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: www
+[info] +  hosting: Local server: http://localhost:5000
+
